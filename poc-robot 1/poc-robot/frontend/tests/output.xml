@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.1 on win32)" generated="2025-04-01T21:24:16.378174" rpa="false" schemaversion="5">
+<suite id="s1" name="Home-Rodovias" source="C:\Users\renzo.tavares\Downloads\poc-robot 1\poc-robot\frontend\tests\home-rodovias.robot">
+<test id="s1-t1" name="Buscar informações no site" line="38">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Abrir navegador" owner="baseFront">
+<kw name="Open Browser" owner="Browser">
+<msg time="2025-04-01T21:24:17.002000" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg time="2025-04-01T21:24:17.004436" level="INFO">{"browser": "firefox", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\renzo.tavares\\Downloads\\poc-robot 1\\poc-robot\\frontend\\tests\\browser\\traces\\temp\\c3ae9d67-7081-44c8-964b-7828800a44b8"}</msg>
+<msg time="2025-04-01T21:24:17.260234" level="INFO">Starting Browser process C:\Users\renzo.tavares\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using port 56138</msg>
+<msg time="2025-04-01T21:24:17.260338" level="INFO">Node startup parameters: ['node', 'C:\\Users\\renzo.tavares\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\Browser\\wrapper\\index.js', '56138']</msg>
+<msg time="2025-04-01T21:24:23.676990" level="INFO">Successfully created browser with options: {"browser":"firefox","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\renzo.tavares\\Downloads\\poc-robot 1\\poc-robot\\frontend\\tests\\browser\\traces\\temp\\c3ae9d67-7081-44c8-964b-7828800a44b8"}</msg>
+<msg time="2025-04-01T21:24:23.678790" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": true,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2025-04-01T21:24:23.784760" level="INFO">Successfully created context. </msg>
+<msg time="2025-04-01T21:24:23.784877" level="INFO">{'acceptDownloads': True, 'bypassCSP': True, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<msg time="2025-04-01T21:24:31.660545" level="INFO">Successfully initialized new page object and opened url: https://rodovias.grupoccr.com.br/</msg>
+<arg>${FRONTEND_URL}</arg>
+<arg>firefox</arg>
+<arg>False</arg>
+<arg>False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="PASS" start="2025-04-01T21:24:17.001288" elapsed="14.660265"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:17.000995" elapsed="14.662205"/>
+</kw>
+<kw name="Verificar política de cookies" owner="baseFront">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-04-01T21:24:31.881094" level="INFO">Waited for Element with selector css=.cookies-alert-button at state visible</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-04-01T21:24:31.673916" elapsed="0.207833"/>
+</kw>
+<arg>Wait For Elements State</arg>
+<arg>${COOKIES_BUTTON}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-04-01T21:24:31.672630" elapsed="0.209561"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Element States" owner="Browser">
+<msg time="2025-04-01T21:24:32.167194" level="INFO">States are: ['attached', 'visible', 'enabled', 'defocused']</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Get the active states from the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:31.884844" elapsed="0.282732"/>
+</kw>
+<msg time="2025-04-01T21:24:32.168182" level="INFO">${CHECK_ALERT_COOKIES} = True</msg>
+<var>${CHECK_ALERT_COOKIES}</var>
+<arg>Get Element States</arg>
+<arg>${COOKIES_BUTTON}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-01T21:24:31.883222" elapsed="0.285087"/>
+</kw>
+<if>
+<branch type="IF" condition="${CHECK_ALERT_COOKIES}==True">
+<kw name="Click" owner="Browser">
+<msg time="2025-04-01T21:24:32.173960" level="INFO">Clicks the element 'css=.cookies-alert-button'.</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:32.171704" elapsed="0.275305"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:32.168917" elapsed="0.278450"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>message=Sem cookies</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-04-01T21:24:32.448443" elapsed="0.000335"/>
+</kw>
+<status status="NOT RUN" start="2025-04-01T21:24:32.447578" elapsed="0.001423"/>
+</branch>
+<status status="PASS" start="2025-04-01T21:24:32.168783" elapsed="0.280375"/>
+</if>
+<status status="PASS" start="2025-04-01T21:24:31.666652" elapsed="0.782765"/>
+</kw>
+<arg>Abrir navegador</arg>
+<arg>AND</arg>
+<arg>Verificar política de cookies</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2025-04-01T21:24:17.000576" elapsed="15.449107"/>
+</kw>
+<kw name="Clicar na lupa" owner="home-keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-04-01T21:24:32.458741" level="INFO">Clicks the element 'id=btnSearch'.</msg>
+<arg>id=btnSearch</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:32.455963" elapsed="0.160386"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:32.454608" elapsed="0.162153"/>
+</kw>
+<kw name="Buscar por &quot;Tarifas&quot;" owner="home-keywords">
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-04-01T21:24:32.621329" level="INFO">Fills the text 'Tarifas' in the given field.</msg>
+<arg>css=input[name="termSearch"]</arg>
+<arg>Tarifas</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:32.619356" elapsed="0.156472"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>css=input[name="termSearch"]</arg>
+<arg>Enter</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:32.776617" elapsed="0.560340"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-01T21:24:35.353779" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-01T21:24:33.337602" elapsed="2.016456"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:32.617825" elapsed="2.736748"/>
+</kw>
+<kw name="Validar resultado da busca por &quot;Tarifas&quot;" owner="home-keywords">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-04-01T21:24:35.531682" level="INFO">Text: 'Exibindo 466 resultados para a busca “Tarifas”'</msg>
+<msg time="2025-04-01T21:24:35.534003" level="INFO">${total_results} = Exibindo 466 resultados para a busca “Tarifas”</msg>
+<var>${total_results}</var>
+<arg>css=.total-results</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.357238" elapsed="0.176948"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${total_results}</arg>
+<arg>Exibindo</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.535629" elapsed="0.000882"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain Element">
+<msg time="2025-04-01T21:24:35.542717" level="FAIL">No keyword with name 'Page Should Contain Element' found.</msg>
+<arg>.cmp-searchHeader__results-container-wrapper</arg>
+<status status="FAIL" start="2025-04-01T21:24:35.542228" elapsed="0.001158">No keyword with name 'Page Should Contain Element' found.</status>
+</kw>
+<msg time="2025-04-01T21:24:35.543850" level="INFO">${exists} = False</msg>
+<var>${exists}</var>
+<arg>Page Should Contain Element</arg>
+<arg>.cmp-searchHeader__results-container-wrapper</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.537006" elapsed="0.006946"/>
+</kw>
+<kw name="Tirar print e fechar o navegador" owner="baseFront">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Page State">
+<msg time="2025-04-01T21:24:35.550103" level="FAIL">No keyword with name 'Get Page State' found.</msg>
+<status status="FAIL" start="2025-04-01T21:24:35.549771" elapsed="0.000510">No keyword with name 'Get Page State' found.</status>
+</kw>
+<msg time="2025-04-01T21:24:35.550628" level="INFO">${browser_open} = False</msg>
+<var>${browser_open}</var>
+<arg>Get Page State</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.545636" elapsed="0.005067"/>
+</kw>
+<if>
+<branch type="IF" condition="${browser_open}==True">
+<kw name="Take Screenshot" owner="Browser">
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="NOT RUN" start="2025-04-01T21:24:35.551788" elapsed="0.000242"/>
+</kw>
+<status status="NOT RUN" start="2025-04-01T21:24:35.550980" elapsed="0.001281"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-01T21:24:35.553580" level="WARN">No browser open, skipping screenshot</msg>
+<arg>message=No browser open, skipping screenshot</arg>
+<arg>level=WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.552859" elapsed="0.002881"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:35.552392" elapsed="0.003712"/>
+</branch>
+<status status="PASS" start="2025-04-01T21:24:35.550926" elapsed="0.005338"/>
+</if>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-04-01T21:24:37.123792" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-01T21:24:35.556586" elapsed="1.567768"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:35.544658" elapsed="1.580124"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:35.356097" elapsed="1.768927"/>
+</kw>
+<kw name="Tirar print e fechar o navegador" owner="baseFront" type="TEARDOWN">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Page State">
+<msg time="2025-04-01T21:24:37.133297" level="FAIL">No keyword with name 'Get Page State' found.</msg>
+<status status="FAIL" start="2025-04-01T21:24:37.132712" elapsed="0.000840">No keyword with name 'Get Page State' found.</status>
+</kw>
+<msg time="2025-04-01T21:24:37.134033" level="INFO">${browser_open} = False</msg>
+<var>${browser_open}</var>
+<arg>Get Page State</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-04-01T21:24:37.128329" elapsed="0.005824"/>
+</kw>
+<if>
+<branch type="IF" condition="${browser_open}==True">
+<kw name="Take Screenshot" owner="Browser">
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="NOT RUN" start="2025-04-01T21:24:37.136014" elapsed="0.000460"/>
+</kw>
+<status status="NOT RUN" start="2025-04-01T21:24:37.134595" elapsed="0.002137"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-01T21:24:37.138573" level="WARN">No browser open, skipping screenshot</msg>
+<arg>message=No browser open, skipping screenshot</arg>
+<arg>level=WARN</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-01T21:24:37.137690" elapsed="0.003050"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:37.136923" elapsed="0.004087"/>
+</branch>
+<status status="PASS" start="2025-04-01T21:24:37.134492" elapsed="0.006671"/>
+</if>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-04-01T21:24:37.151559" level="INFO">No browser open, doing nothing</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-01T21:24:37.141739" elapsed="0.010299"/>
+</kw>
+<status status="PASS" start="2025-04-01T21:24:37.126891" elapsed="0.025448"/>
+</kw>
+<tag>busca</tag>
+<status status="PASS" start="2025-04-01T21:24:16.998935" elapsed="20.154083"/>
+</test>
+<status status="PASS" start="2025-04-01T21:24:16.382426" elapsed="21.067705"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">busca</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Home-Rodovias">Home-Rodovias</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-04-01T21:24:17.002000" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg time="2025-04-01T21:24:35.553580" level="WARN">No browser open, skipping screenshot</msg>
+<msg time="2025-04-01T21:24:37.138573" level="WARN">No browser open, skipping screenshot</msg>
+</errors>
+</robot>

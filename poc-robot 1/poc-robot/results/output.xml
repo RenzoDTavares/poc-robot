@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.13.2 on win32)" generated="2025-03-31T09:53:22.284801" rpa="false" schemaversion="5">
+<suite id="s1" name="Home-Rodovias" source="C:\Users\NathaliaAndreaGodoid\Documents\poc-robot\frontend\tests\home-rodovias.robot">
+<test id="s1-t1" name="Validacao do mapa" line="30">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Abrir navegador" owner="baseFront">
+<kw name="Open Browser" owner="Browser">
+<msg time="2025-03-31T09:53:22.582323" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg time="2025-03-31T09:53:22.583382" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\NathaliaAndreaGodoid\\Documents\\poc-robot\\results\\browser\\traces\\temp\\79c9f990-d352-4c50-ab1e-35e6293f32e6"}</msg>
+<msg time="2025-03-31T09:53:22.624680" level="INFO">Starting Browser process C:\Users\NathaliaAndreaGodoid\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using port 57757</msg>
+<msg time="2025-03-31T09:53:22.624836" level="INFO">Node startup parameters: ['node', 'C:\\Users\\NathaliaAndreaGodoid\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\Browser\\wrapper\\index.js', '57757']</msg>
+<msg time="2025-03-31T09:53:24.131450" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\NathaliaAndreaGodoid\\Documents\\poc-robot\\results\\browser\\traces\\temp\\79c9f990-d352-4c50-ab1e-35e6293f32e6"}</msg>
+<msg time="2025-03-31T09:53:24.133963" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": true,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  }
+}</msg>
+<msg time="2025-03-31T09:53:24.204404" level="INFO">Successfully created context. </msg>
+<msg time="2025-03-31T09:53:24.204540" level="INFO">{'acceptDownloads': True, 'bypassCSP': True, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 720, 'width': 1280}}</msg>
+<msg time="2025-03-31T09:53:31.136782" level="INFO">Successfully initialized new page object and opened url: https://rodovias.grupoccr.com.br/</msg>
+<arg>${FRONTEND_URL}</arg>
+<arg>chromium</arg>
+<arg>False</arg>
+<arg>False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="PASS" start="2025-03-31T09:53:22.580124" elapsed="8.556952"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:22.579694" elapsed="8.557685"/>
+</kw>
+<kw name="Verificar política de cookies" owner="baseFront">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-03-31T09:53:31.194229" level="INFO">Waited for Element with selector css=.cookies-alert-button at state visible</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.139395" elapsed="0.055050"/>
+</kw>
+<arg>Wait For Elements State</arg>
+<arg>${COOKIES_BUTTON}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.138607" elapsed="0.055952"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Element States" owner="Browser">
+<msg time="2025-03-31T09:53:31.258606" level="INFO">States are: ['attached', 'visible', 'enabled', 'defocused']</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Get the active states from the element found by ``selector``.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.195102" elapsed="0.063603"/>
+</kw>
+<msg time="2025-03-31T09:53:31.258945" level="INFO">${CHECK_ALERT_COOKIES} = True</msg>
+<var>${CHECK_ALERT_COOKIES}</var>
+<arg>Get Element States</arg>
+<arg>${COOKIES_BUTTON}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.194735" elapsed="0.064245"/>
+</kw>
+<if>
+<branch type="IF" condition="${CHECK_ALERT_COOKIES}==True">
+<kw name="Click" owner="Browser">
+<msg time="2025-03-31T09:53:31.260232" level="INFO">Clicks the element 'css=.cookies-alert-button'.</msg>
+<arg>${COOKIES_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.259572" elapsed="0.040110"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:31.259120" elapsed="0.040742"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>message=Sem cookies</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-31T09:53:31.300514" elapsed="0.000211"/>
+</kw>
+<status status="NOT RUN" start="2025-03-31T09:53:31.299976" elapsed="0.000885"/>
+</branch>
+<status status="PASS" start="2025-03-31T09:53:31.259087" elapsed="0.041895"/>
+</if>
+<status status="PASS" start="2025-03-31T09:53:31.137869" elapsed="0.163397"/>
+</kw>
+<arg>Abrir navegador</arg>
+<arg>AND</arg>
+<arg>Verificar política de cookies</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2025-03-31T09:53:22.579210" elapsed="8.722307"/>
+</kw>
+<kw name="Validar logotipo visivel" owner="home-keywords">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-03-31T09:53:31.312042" level="INFO">Waited for Element with selector xpath=//*[@id="container-4eeed95508"]/div/div[1]/a/img at state visible</msg>
+<arg>xpath=//*[@id="container-4eeed95508"]/div/div[1]/a/img</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.303599" elapsed="0.008604"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:31.302173" elapsed="0.010155"/>
+</kw>
+<kw name="Menus principais" owner="home-keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-03-31T09:53:31.314306" level="INFO">Clicks the element 'xpath=//*[@id="btnMenuConcessionary"]'.</msg>
+<arg>${MENU_SUPERIOR_HOME}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.313063" elapsed="0.052691"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:31.312629" elapsed="0.053352"/>
+</kw>
+<kw name="Redirecionamento SPVias" owner="home-keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-03-31T09:53:31.376980" level="INFO">Clicks the element 'xpath=//*[@id="atom_navHeader-Concessionary-6dc3f0adb1"]/ul/li[3]/a'.</msg>
+<arg>xpath=//*[@id="atom_navHeader-Concessionary-6dc3f0adb1"]/ul/li[3]/a</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.376001" elapsed="0.167914"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>xpath=//src[contains(text(), 'SPVias')]</arg>
+<arg>SPVias</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.544273" elapsed="0.000563"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-03-31T09:53:32.687351" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-03-31T09:53:31.545156" elapsed="1.142847"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:31.373599" elapsed="1.314811"/>
+</kw>
+<kw name="Validacao mapa" owner="home-keywords">
+<kw name="Click" owner="Browser">
+<msg time="2025-03-31T09:53:32.692003" level="INFO">Clicks the element 'xpath=//*[@id="roadcards-map-select-options"]/li[2]'.</msg>
+<arg>xpath=//*[@id="roadcards-map-select-options"]/li[2]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-03-31T09:53:32.690581" elapsed="0.609033"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-03-31T09:53:33.331385" level="INFO">Waited for Element with selector id=map at state visible</msg>
+<arg>id=map</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-03-31T09:53:33.300727" elapsed="0.031903"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:32.689103" elapsed="0.645454"/>
+</kw>
+<kw name="Tirar print e fechar o navegador" owner="baseFront" type="TEARDOWN">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-03-31T09:53:33.622437" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-2.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-2.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-03-31T09:53:33.338886" elapsed="0.283960"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-03-31T09:53:34.367885" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-03-31T09:53:33.623157" elapsed="0.745057"/>
+</kw>
+<status status="PASS" start="2025-03-31T09:53:33.337455" elapsed="1.031041"/>
+</kw>
+<tag>validacao_mapa</tag>
+<status status="PASS" start="2025-03-31T09:53:22.577986" elapsed="11.790889"/>
+</test>
+<status status="PASS" start="2025-03-31T09:53:22.286440" elapsed="12.173951"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">validacao_mapa</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Home-Rodovias">Home-Rodovias</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-31T09:53:22.582323" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+</errors>
+</robot>
